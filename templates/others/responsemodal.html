@@ -1,0 +1,14 @@
+{% for row in emtdata %}
+<form action="" method="POST">
+    <div class="form-group">
+        <label for="stocks">Stocks Code</label>
+        <input type="text" class="form-control" id="stocks" value="{{ row.1 }}" name="stockscode"> 
+    </div>
+
+    <div class="form-group">
+        <label for="stocks_name">Stocks Name</label>
+        <input type="text" class="form-control" id="stocks_name" value="{{ row.2 }}" name="stocksname">
+    </div>
+</form>
+
+{% endfor %}

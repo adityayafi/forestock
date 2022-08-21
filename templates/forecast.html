@@ -1,0 +1,21 @@
+{% include 'header.html' %}
+
+<div class="container" style="padding-top: 50px; padding-bottom: 50px;">
+    <table class="table table-boredered">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Prediction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in data %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{data}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+
+</div>

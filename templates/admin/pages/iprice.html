@@ -1,0 +1,57 @@
+{% include 'admin/layout/header.html' %}
+
+{% include 'admin/layout/navbar.html' %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Upload Price History Page</h1>
+
+                    <div class="card">
+                        <div class="card-header">
+
+                        </div>
+                        <form action="/upload" method="POST" enctype="multipart/form-data">
+                            <div class="card-body">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">Stocks</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01" name="emiten">
+                                        <option selected>Choose...</option>
+                                    {% for row in data %}
+                                      <option value="{{row.0}}">{{row.2}} ({{row.1}})</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                                <p style="color: red;">*If the stock you want to choose does not exist, then go to the "Stock"
+                                    page and input the new stock data</p>
+                                <br>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon01" name="file">
+                                      <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                    </div>
+                                  </div>
+                                <p style="color: red">*Only accepts ".csv" files</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+
+
+            {% include 'admin/layout/footer.html' %}

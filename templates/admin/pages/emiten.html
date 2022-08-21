@@ -1,0 +1,109 @@
+{% include 'admin/layout/header.html' %}
+{% include 'admin/layout/navbar.html' %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Stocks List Page</h1>
+
+                    <div class="content">
+                        <!-- Entry Data Form -->
+                        <div class="card">
+                            <div class="card-header h4">
+                                Stocks Data Entry Form
+                            </div>
+                            
+                            <form action="inputemiten" method="POST">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="stocks">Stocks Code</label>
+                                        <input type="text" class="form-control" id="stocks" placeholder="Enter Stocks Code" name="stockscode"> 
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="stocks_name">Stocks Name</label>
+                                        <input type="text" class="form-control" id="stocks_name" placeholder="Enter Stocks Name" name="stocksname">
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    
+                                    <button class="btn btn-primary" type="submit" name="stocksentry">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End of Entry Data Form -->
+                        <br>
+                        <!-- Stocks List Table -->
+                        <div class="card">
+                            <div class="card-header h4">Stocks List Table</div>
+
+                            <div class="card-body">
+                                <table id="stockslisttable" class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">No</th>
+                                            <th style="text-align: center;">Stocks Code</th>
+                                            <th style="text-align: center;">Stocks Name</th>
+                                            <th style="text-align: center;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in data %}
+                                        <tr>
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ row.1 }}</td>
+                                            <td>{{ row.2 }}</td>
+                                            <td align="center">
+                                                <div class="btn-group btn-group-sm" >
+                                                    <a href="huploads?emtid={{row.0}}" class="btn btn-sm btn-success bg-right" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;"><i class="fa-solid fa-clock-rotate-left"></i>History</a>
+                                                    <a href="" class="btn btn-sm btn-primary bg-left userinfo" data-id='{{ row.0 }}' data-toggle="#editmodal{{ row.0 }}" data-toggle="modal"><i class="fa-solid fa-pen-to-square"></i> Edit</a>                                                    
+                                                    <a href="" class="btn btn-sm btn-danger bg-right" style="border-top-right-radius: 30px; border-bottom-right-radius: 30px;"><i class="fa-solid fa-trash"></i> Delete</a>                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End of Stock List Table -->
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+
+
+<!-- Stock List Edit Modal             -->
+
+<div class="modal fade" id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Stocks Data Update Form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- End of Stock List Edit Modal -->  
+  
+
+            
+
+{% include 'admin/layout/footer.html' %}

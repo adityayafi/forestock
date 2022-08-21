@@ -1,0 +1,73 @@
+{% include 'admin/layout/header.html' %}
+
+{% include 'admin/layout/navbar.html' %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+
+                    <div class="card">
+                        <div class="card-header">
+
+                        </div>
+                        <form action="/hprice" method="POST">
+                            <div class="card-body">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">Stocks</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01" name="emiten">
+                                        <option selected>Choose...</option>
+                                    {% for row in data %}
+                                      <option value="{{row.0}}">{{row.2}} ({{row.1}})</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>                                
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary" type="submit" name="submit">Submit</button>                                
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-header">
+
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <!-- <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Open</th>
+                                        <th>High</th>
+                                        <th>Low</th>
+                                        <th>Close</th>
+                                        <th>Adj Close</th>
+                                        <th>Volume</th>
+                                    </tr>
+                                </thead> -->
+                                <tbody>
+                                    {% for row in data1 %}
+                                    <tr>
+                                        {% for col in row.split(",") %}
+                                        <td>{{col}}</td>
+                                        {% endfor %}                                    
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+
+
+{% include 'admin/layout/footer.html' %}

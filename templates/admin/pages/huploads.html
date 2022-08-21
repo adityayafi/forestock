@@ -1,0 +1,51 @@
+{% include 'admin/layout/header.html' %}
+
+{% include 'admin/layout/navbar.html' %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Dataset Uploads History</h1>
+
+                    <div class="card">
+                        <div class="card-header h4">Dataset List Table</div>
+
+                        <div class="card-body">
+                            <table id="stockslisttable" class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">No</th>
+                                        <th style="text-align: center;">File Name</th>
+                                        <th style="text-align: center;">Upload Time</th>
+                                        <th style="text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for row in data %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ row.2 }}</td>
+                                        <td>{{ row.4 }}</td>
+                                        <td align="center">
+                                            <div class="btn-group btn-group-sm" >
+                                                <a href="hudelete?upid={{row.0}}" class="btn btn-sm btn-danger bg-right" style="border-radius: 50%;"><i class="fa-solid fa-trash"></i> Delete</a>                                                    
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>                    
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+
+
+{% include 'admin/layout/footer.html' %}
